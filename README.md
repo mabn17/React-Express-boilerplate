@@ -38,7 +38,7 @@ In the production mode, we will have only 1 server running. All the client side 
 
 ```bash
 # Clone the repository
-git clone {REPO}
+git clone git@github.com:mabn17/chaufforsverksamheten.git
 
 # Go inside the directory
 cd chaufforsverksamheten
