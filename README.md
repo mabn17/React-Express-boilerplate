@@ -231,7 +231,7 @@ This starts a server and listens on port 8080 for connections. As an example, th
 
 ### Docker
 
-Since we develop on different machine, operating system, it might be good to try out docker. Docker helps us test ouer code agains a server like envirement. All you have to do to start the container is to run ./run-app-in-docker.sh.
+Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement. All you have to do to start the container is to run ./run-app-in-docker.sh.
 
 ```bash
 #!/usr/bin/env bash
