@@ -6,4 +6,4 @@ build:
     node: v11.7
   dependencies:
     before:
-      - npm run build
+      - npm install && npm run build
