@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import './app.css';
-import TenImage from './ten.jpg';
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/home';
+import Hello from './components/hello';
 
 export default class App extends Component {
-  state = { username: null };
-
-  /**
-   * Example of how React can fetch the data from ouer backend.
-   */
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
-  }
+  componentDidMount() {}
 
   render() {
-    const { username } = this.state;
     return (
       <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <h2>By Grupp</h2>
-        <img src={TenImage} alt="react" />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/hello" component={Hello} />
+        </Switch>
       </div>
     );
   }
