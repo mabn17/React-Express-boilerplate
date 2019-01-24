@@ -1,11 +1,19 @@
-FROM node:11.7-slim
+FROM mhart/alpine-node:11.7
 
-WORKDIR /opt/app/
+WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn install
+RUN npm ci --prod
+
+# And then copy over node_modules, etc from that stage to the smaller base image
+FROM mhart/alpine-node:11.7
+
+WORKDIR /app
+
+COPY --from=0 /app .
 
 COPY . .
+# EXPOSE 3000
 
 CMD yarn start
