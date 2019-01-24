@@ -248,7 +248,7 @@ docker-compose build
 docker-compose run --rm --service-ports app
 ```
 
-The Dockerfile run node version 11.7 and can be found [here](https://github.com/mhart/alpine-node). It copys the current workdirectory and moves it into the **app** directory inside the container. It the installs all the necessary packages and starts up the production server.
+It uses mhart/alpine-node:11.7 image to run node version 11.7 and can be found [here](https://github.com/mhart/alpine-node). It copys the current workdirectory and moves it into the **app** directory inside the container. It the installs all the necessary packages and starts up the production server.
 
 **Note**: I've personally never used it so it probably needs alot of updates.
 
