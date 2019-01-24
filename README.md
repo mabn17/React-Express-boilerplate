@@ -1,5 +1,6 @@
 # Chaufförsverksamheten
 
+[![Build Status](https://travis-ci.org/mabn17/chaufforsverksamheten.svg?branch=master)](https://travis-ci.org/mabn17/chaufforsverksamheten)
 This is used to build a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
 - [Chaufförsverksamheten](#chaufförsverksamheten)
