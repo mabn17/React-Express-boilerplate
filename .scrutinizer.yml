@@ -7,3 +7,8 @@ build:
   dependencies:
     before:
       - npm install && npm run build
+  nodes:
+    analysis:
+      tests:
+        override:
+          - js-scrutinizer-run
