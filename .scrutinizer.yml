@@ -1,0 +1,9 @@
+filter:
+  excluded_paths: [node_modules/*, build/*, lib/*, test/*]
+
+build:
+  environment:
+    node: v11.7
+  dependencies:
+    before:
+      - npm run build
