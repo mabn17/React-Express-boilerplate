@@ -16,6 +16,7 @@ This is used to build a full stack web application using React, Node.js, Express
     - [Nodemon](#nodemon)
     - [Express](#express)
     - [Concurrently](#concurrently)
+    - [Docker](#docker)
     - [VSCode + ESLint + Prettier](#vscode--eslint--prettier)
       - [Installation guide](#installation-guide)
 
@@ -227,6 +228,29 @@ This starts a server and listens on port 8080 for connections. As an example, th
 ### VSCode + ESLint + Prettier
 
 [VSCode](https://code.visualstudio.com/) is a lightweight but powerful source code editor. [ESLint](https://eslint.org/) takes care of the code-quality. [Prettier](https://prettier.io/) takes care of all the formatting.
+
+### Docker
+
+Since we develop on different machine, operating system, it might be good to try out docker. Docker helps us test ouer code agains a server like envirement. All you have to do to start the container is to run ./run-app-in-docker.sh.
+
+```bash
+#!/usr/bin/env bash
+
+# Forces running containers to stop.
+docker-compose kill
+
+# Forcefully removes any stopped service containers.
+docker-compose rm -f
+
+docker-compose build
+
+# Runs the app with port(s) enabled and mapped to the host. Removes the container after run.
+docker-compose run --rm --service-ports app
+```
+
+The Dockerfile run node version 11.7 and can be found [here](https://github.com/mhart/alpine-node). It copys the current workdirectory and moves it into the **app** directory inside the container. It the installs all the necessary packages and starts up the production server.
+
+**Note**: I've personally never used it so it probably needs alot of updates.
 
 #### Installation guide
 
