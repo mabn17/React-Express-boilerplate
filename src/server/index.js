@@ -11,4 +11,10 @@ app.get('/api/testingShit', (req, res) => {
 });
 // For single lines
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+app.get('/*', (req, res) => {
+  res.sendFile('index.html', (err) => {
+    res.status(500).send(err);
+  });
+});
+
 app.listen(EXPRESS_PORT, () => console.log(`Listening on port ${EXPRESS_PORT}!`));
