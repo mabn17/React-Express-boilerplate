@@ -24,8 +24,6 @@ This is used to build a full stack web application using React, Node.js, Express
 
 ## Introduction
 
-[Create React App](https://github.com/facebook/create-react-app) is a quick way to get started with React development and it requires no build configuration. But it completely hides the build config which makes it difficult to extend. It also requires some additional work to integrate it with an existing Node.js/Express backend application.
-
 This is a full stack [React](https://reactjs.org/) application with a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) backend. Client side code is written in React and the backend API is written using Express. This application is configured with [Airbnb's ESLint rules](https://github.com/airbnb/javascript) and formatted through [prettier](https://prettier.io/).
 
 ### Development mode
@@ -99,13 +97,13 @@ Babel requires plugins to do the transformation. Presets are the set of plugins 
 }
 ```
 
-[I am using Airbnb's Javascript Style Guide](https://github.com/airbnb/javascript) which is used by many JavaScript developers worldwide. Since we are going to write both client (browser) and server side (Node.js) code, I am setting the **env** to browser and node. Optionally, we can override the Airbnb's configurations to suit our needs. I have turned off [**no-console**](https://eslint.org/docs/rules/no-console), [**comma-dangle**](https://eslint.org/docs/rules/comma-dangle) and [**react/jsx-filename-extension**](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) rules.
+[We are using Airbnb's Javascript Style Guide](https://github.com/airbnb/javascript) which is used by many JavaScript developers worldwide. Since we are going to write both client (browser) and server side (Node.js) code, we are setting the **env** to browser and node. Optionally, we can override the Airbnb's configurations to suit our needs. We have turned off [**no-console**](https://eslint.org/docs/rules/no-console), [**comma-dangle**](https://eslint.org/docs/rules/comma-dangle) and [**react/jsx-filename-extension**](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) rules.
 
 ### Webpack
 
 [Webpack](https://webpack.js.org/) is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser.
 
-[webpack.config.js](https://webpack.js.org/configuration/) file is used to describe the configurations required for webpack. Below is the webpack.config.js file which I am using.
+[webpack.config.js](https://webpack.js.org/configuration/) file is used to describe the configurations required for webpack. Below is the webpack.config.js file which we are using.
 
 ```javascript
 const path = require("path");
@@ -167,7 +165,7 @@ module.exports = {
 
 ### Webpack dev server
 
-[Webpack dev server](https://webpack.js.org/configuration/dev-server/) is used along with webpack. It provides a development server that provides live reloading for the client side code. This should be used for development only.
+[Webpack dev server](https://webpack.js.org/configuration/dev-server/) is used along with webpack. It provides a development server that provides live reloading for the client side code. This should be used for **development only**.
 
 The devServer section of webpack.config.js contains the configuration required to run webpack-dev-server which is given below.
 
@@ -184,11 +182,11 @@ devServer: {
 
 [**Port**](https://webpack.js.org/configuration/dev-server/#devserver-port) specifies the Webpack dev server to listen on this particular port (3000 in this case). When [**open**](https://webpack.js.org/configuration/dev-server/#devserver-open) is set to true, it will automatically open the home page on startup. [Proxying](https://webpack.js.org/configuration/dev-server/#devserver-proxy) URLs can be useful when we have a separate API backend development server and we want to send API requests on the same domain. In our case, we have a Node.js/Express backend where we want to send the API requests to. [HistoryApiFallback](https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback) is set to true, it will help avoiding 404 responses, this is mainly so we can set up a "catch all" route in express to handle other routes with React.
 
-**NOTE** react-router-dom will not work on the Dockerfile nor if you run the application outside developer mode. To recognize the path later on. This will need extra configuration/files (dippending on the server) if pushed in production mode, similar like how apache uses .htdocs files.
+**NOTE** react-router-dom might not work ones it's deployed to a server. To recognize the path later on. This will need extra configuration/files (dippending on the server) if pushed in production mode, similar like how apache uses .htdocs files.
 
 ### Nodemon
 
-Nodemon is a utility that will monitor for any changes in the server source code and it automatically restart the server. This is used in development only.
+Nodemon is a utility that will monitor for any changes in the server source code and it automatically restart the server. This is used in **development only**.
 
 nodemon.json file is used to describe the configurations for Nodemon. Below is the nodemon.json file which we are using.
 
@@ -208,15 +206,19 @@ src/server/index.js is the entry point to the server application. Below is the s
 
 ```javascript
 const express = require("express");
-const os = require("os");
+const fallback = require("express-history-api-fallback");
 
 const app = express();
 const port = process.env.LINUX_PORT || 8080;
 
 app.use(express.static("dist"));
-app.get("/api/getUsername", (req, res) =>
-  res.send({ username: os.userInfo().username })
-);
+
+// Api routes
+require("./routes")(app);
+
+// Redirects to ouer React main file.
+app.use(fallback("index.html", { root: "dist" }));
+
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 ```
 
@@ -224,7 +226,7 @@ This starts a server and listens on port 8080 for connections. As an example, th
 
 ### Concurrently
 
-[Concurrently](https://github.com/kimmobrunfeldt/concurrently) is used to run multiple commands concurrently. I am using it to run the webpack dev server and the backend node server concurrently in the development environment. Below are the npm/yarn script commands used.
+[Concurrently](https://github.com/kimmobrunfeldt/concurrently) is used to run multiple commands concurrently. We are using it to run the webpack dev server and the backend node server concurrently in the development environment. Below are the npm/yarn script commands used.
 
 ```javascript
 "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
@@ -238,7 +240,7 @@ This starts a server and listens on port 8080 for connections. As an example, th
 
 ### Docker
 
-Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement. All you have to do to start the container is to run ./run-app-in-docker.sh.
+Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement with the same rules. All you have to do to start the container is to run run-app-in-docker.sh located in the root directory.
 
 ```bash
 #!/usr/bin/env bash
@@ -257,7 +259,7 @@ docker-compose run --rm --service-ports app
 
 It uses mhart/alpine-node:11.7 image to run node version 11.7 and can be found [here](https://github.com/mhart/alpine-node). It copys the current workdirectory and moves it into the **app** directory inside the container. It the installs all the necessary packages and starts up the production server.
 
-**Note**: I've personally never used it so it probably needs alot of updates.
+**Note**: I'm not an experienced user with Docker so feel free to help me update it.
 
 #### Installation guide
 
