@@ -16,7 +16,7 @@ export default class App extends Component {
   render() {
     const { username } = this.state;
     return (
-      <div>
+      <div className="py-3 my-5">
         {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
         <h2>By Grupp</h2>
         <img src={TenImage} alt="react" />

@@ -13,17 +13,10 @@ const port = process.env.LINUX_PORT || 8080;
 // mongoose.Promise = global.Promise;
 
 // Sets up the default folder
-
 app.use(express.static('dist'));
 // Api routes
 require('./routes')(app);
 
 // Redirects to ouer React main file.
 app.use(fallback('index.html', { root: 'dist' }));
-// app.get('*', (req, res) => {
-//   res.sendFile('index.html', (err) => {
-//     res.status(500).send(err);
-//   });
-// });
-
 app.listen(port, () => console.log(`Listening on port ${port}!`));

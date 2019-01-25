@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mabn17/chaufforsverksamheten.svg?branch=master)](https://travis-ci.org/mabn17/chaufforsverksamheten) [![Build Status](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/?branch=master)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/e33aafbfdfda15c35dec/maintainability)](https://codeclimate.com/github/mabn17/chaufforsverksamheten/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e33aafbfdfda15c35dec/maintainability)](https://codeclimate.com/github/mabn17/chaufforsverksamheten/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/362dfae8e67849c49860cc09236228b5)](https://www.codacy.com/app/mabn17/chaufforsverksamheten?utm_source=github.com&utm_medium=referral&utm_content=mabn17/chaufforsverksamheten&utm_campaign=Badge_Grade)
 
 This is used to build a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
@@ -11,7 +11,7 @@ This is used to build a full stack web application using React, Node.js, Express
     - [Development mode](#development-mode)
     - [Production mode](#production-mode)
   - [Quick Start](#quick-start)
-  - [Documentation](#documentation)
+    - [Documentation](#documentation)
     - [Folder Structure](#folder-structure)
     - [Babel](#babel)
     - [ESLint](#eslint)
@@ -158,12 +158,12 @@ module.exports = {
 };
 ```
 
-1.  **entry:** entry: ./src/client/index.js is where the application starts executing and webpack starts bundling.
-    Note: babel-polyfill is added to support async/await. Read more [here](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack).
-2.  **output path, filename:** the target directory and the filename for the bundled output.
-3.  **module loaders:** Module loaders are transformations that are applied on the source code of a module. We pass all the js file through [babel-loader](https://github.com/babel/babel-loader) to transform JSX to Javascript. CSS files are passed through [css-loaders](https://github.com/webpack-contrib/css-loader) and [style-loaders](https://github.com/webpack-contrib/style-loader) to load and bundle CSS files. Fonts and images are loaded through url-loader.
-4.  **Dev Server:** Configurations for the webpack-dev-server which will be described in coming section.
-5.  **plugins:** [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin) is a webpack plugin to remove the build folder(s) before building. [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles. It loads the template (public/index.html) and injects the output bundle.
+1. **entry:** entry: ./src/client/index.js is where the application starts executing and webpack starts bundling.
+   Note: babel-polyfill is added to support async/await. Read more [here](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack).
+2. **output path, filename:** the target directory and the filename for the bundled output.
+3. **module loaders:** Module loaders are transformations that are applied on the source code of a module. We pass all the js file through [babel-loader](https://github.com/babel/babel-loader) to transform JSX to Javascript. CSS files are passed through [css-loaders](https://github.com/webpack-contrib/css-loader) and [style-loaders](https://github.com/webpack-contrib/style-loader) to load and bundle CSS files. Fonts and images are loaded through url-loader.
+4. **Dev Server:** Configurations for the webpack-dev-server which will be described in coming section.
+5. **plugins:** [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin) is a webpack plugin to remove the build folder(s) before building. [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles. It loads the template (public/index.html) and injects the output bundle.
 
 ### Webpack dev server
 
@@ -265,16 +265,16 @@ It uses mhart/alpine-node:11.7 image to run node version 11.7 and can be found [
 
 #### Installation guide
 
-1.  Install [VSCode](https://code.visualstudio.com/)
-2.  Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-3.  Install [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-4.  Modify the VSCode user settings to add below configuration
+1. Install [VSCode](https://code.visualstudio.com/)
+2. Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+3. Install [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+4. Modify the VSCode user settings to add below configuration
 
-    ```javascript
-    "eslint.alwaysShowStatus": true,
-    "eslint.autoFixOnSave": true,
-    "editor.formatOnSave": true,
-    "prettier.eslintIntegration": true
-    ```
+   ```javascript
+   "eslint.alwaysShowStatus": true,
+   "eslint.autoFixOnSave": true,
+   "editor.formatOnSave": true,
+   "prettier.eslintIntegration": true
+   ```
 
 Above, we have modified editor configurations. Alternatively, this can be configured at the project level by following [this article](https://medium.com/@netczuk/your-last-eslint-config-9e35bace2f99).
