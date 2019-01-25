@@ -1,6 +1,8 @@
 # Chaufförsverksamheten
 
-[![Build Status](https://travis-ci.org/mabn17/chaufforsverksamheten.svg?branch=master)](https://travis-ci.org/mabn17/chaufforsverksamheten) [![Build Status](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/build-status/master)
+[![Build Status](https://travis-ci.org/mabn17/chaufforsverksamheten.svg?branch=master)](https://travis-ci.org/mabn17/chaufforsverksamheten) [![Build Status](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/?branch=master)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/e33aafbfdfda15c35dec/maintainability)](https://codeclimate.com/github/mabn17/chaufforsverksamheten/maintainability)
 
 This is used to build a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
