@@ -4,13 +4,14 @@ const fallback = require('express-history-api-fallback');
 const app = express();
 const port = process.env.LINUX_PORT || 8080;
 
-// Setting up the Database (Not yet added)
-// This is for mongoDB, will leave it commented out if we deside to use it.
-
-// const mongoose = require('mongoose');
-// const config = require('../../config/config');
-// mongoose.connect(config.db_dev);
-// mongoose.Promise = global.Promise;
+// ONLY IF THERE ARE PROBLEMS WITH CROS IN development
+// const cros = require('cros);
+// const bodyParser = require('body-parser);
+/**
+ * app.use(bodyParser.json());
+ * app.use(cros()); // development only
+ * app.use(bodyParser.urlencoded({ extended: false }));
+ */
 
 // Sets up the default folder
 app.use(express.static('dist'));
