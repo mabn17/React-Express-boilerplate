@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Does not work with version 1.0.0
 # Forces running containers to stop.
 docker-compose kill
 

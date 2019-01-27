@@ -1,3 +1,4 @@
+# Does not work with version 1.0.0
 FROM mhart/alpine-node:11.7 AS build
 
 WORKDIR /app
