@@ -3,10 +3,6 @@ const navigation = {
     {
       name: 'Hem',
       url: '/'
-    },
-    {
-      name: 'Hello World',
-      url: '/hello'
     }
   ],
   loginRegLink: [
