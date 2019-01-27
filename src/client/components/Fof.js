@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class HelloWorld extends Component {
+class FoF extends Component {
   componentDidMount() {
     document.title = 'React Route Test';
   }
 
   render = () => (
-    <header className="header py-2">
-      <p>Hello World</p>
+    <header className="py-4 my5">
+      <h2 className="text-danger">404 - Page Not Found</h2>
     </header>
   );
 }
 
-export default HelloWorld;
+export default FoF;

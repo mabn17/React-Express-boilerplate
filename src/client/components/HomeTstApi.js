@@ -13,7 +13,7 @@ export default class App extends Component {
       .then(user => this.setState({ username: user.username }));
   }
 
-  render() {
+  render = () => {
     const { username } = this.state;
     return (
       <div className="py-3 my-5">
@@ -22,5 +22,5 @@ export default class App extends Component {
         <img src={TenImage} alt="react" />
       </div>
     );
-  }
+  };
 }

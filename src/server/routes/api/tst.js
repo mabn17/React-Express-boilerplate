@@ -1,4 +1,3 @@
-// const User = require('../../models/User');
 const os = require('os');
 
 module.exports = (app) => {
