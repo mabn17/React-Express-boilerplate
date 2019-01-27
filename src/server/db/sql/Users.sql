@@ -1,21 +1,18 @@
--- USE ChauffOrsverksamheten;
+USE Chaufforsverksamheten;
+SET NAMES utf8;
 
+
+-- Example of hadeling premissions
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your pass';
+
+DROP TABLE Users;
 CREATE TABLE Users
 (
     id INT AUTO_INCREMENT,
-    first_name VARCHAR(40),
-    last_name VARCHAR(40),
-    email VARCHAR(60),
-    password TEXT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
 
-    PRIMARY KEY(id);
+    PRIMARY KEY(id)
 );
-
--- ON Connection problems:
--- Using the old mysql_native_password works:
-
--- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YourRootPassword';
--- or
--- CREATE USER 'foo'@'%' IDENTIFIED WITH mysql_native_password BY 'bar';
--- then
--- FLUSH PRIVILEGES;

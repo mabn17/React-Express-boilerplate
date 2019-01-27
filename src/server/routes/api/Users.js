@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwtConfig = require('fs').existsSync('../../../../config/jwt/config')
   ? require('../../../../config/jwt/config')
   : require('../../../../config/jwt/config.example');
+// const jwtConfig = require('../../../../config/jwt/config');
 
 const User = require('../../db/models/Users');
 
