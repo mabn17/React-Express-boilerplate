@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class HelloWorld extends Component {
+class Hello extends Component {
   componentDidMount() {
     document.title = 'React Route Test';
   }
@@ -12,4 +12,4 @@ class HelloWorld extends Component {
   );
 }
 
-export default HelloWorld;
+export default Hello;

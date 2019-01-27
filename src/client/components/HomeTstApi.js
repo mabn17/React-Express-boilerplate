@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TenImage from '../img/ten.jpg';
 
-export default class App extends Component {
+export default class Home extends Component {
   state = { username: null };
 
   /**
