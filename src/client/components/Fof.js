@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FoF extends Component {
+export default class FoF extends Component {
   componentDidMount() {
     document.title = 'React Route Test';
   }
@@ -11,5 +11,3 @@ class FoF extends Component {
     </header>
   );
 }
-
-export default FoF;
