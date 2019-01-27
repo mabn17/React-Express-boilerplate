@@ -5,4 +5,5 @@ dist
 .DS_Store
 yarn.lock
 package-lock.json
-config/config.js
+config/jwt/config.js
+config/db/config.js
