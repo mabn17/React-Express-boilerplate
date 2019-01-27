@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import navigation from '../../../config/navbar/config';
 
 class Navbar extends Component {
   logout(e) {
@@ -16,25 +17,24 @@ class Navbar extends Component {
   render = () => {
     const loginRegLink = (
       <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">
-            Logga in
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/register" className="nav-link">
-            Registrera
-          </Link>
-        </li>
+        {navigation.loginRegLink.map(part => (
+          <li key={part.url + part.name} className="nav-item">
+            <Link to={part.url} className="nav-link">
+              {part.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     );
     const userLink = (
       <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/profile" className="nav-link">
-            Användare
-          </Link>
-        </li>
+        {navigation.userLink.map(part => (
+          <li key={part.url + part.name} className="nav-item">
+            <Link to={part.url} className="nav-link">
+              {part.name}
+            </Link>
+          </li>
+        ))}
         <li className="nav-item">
           <button type="button" onClick={this.logout.bind(this)} className="nav-link">
             Logga ut
@@ -43,10 +43,6 @@ class Navbar extends Component {
       </ul>
     );
 
-    /**
-     * TODO: Move routes to a congig fil and forEach them insted of
-     * doing more of li > Link > text
-     */
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded mb-4">
         <button
@@ -62,16 +58,13 @@ class Navbar extends Component {
         </button>
         <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
           <ul className="navbar-nav">
-            <li>
-              <Link to="/" className="nav-link">
-                Hem
-              </Link>
-            </li>
-            <li>
-              <Link to="/hello" className="nav-link">
-                Hello World
-              </Link>
-            </li>
+            {navigation.mainItems.map(part => (
+              <li key={part.url + part.name} className="nav-item">
+                <Link to={part.url} className="nav-link">
+                  {part.name}
+                </Link>
+              </li>
+            ))}
           </ul>
           {localStorage.usertoken ? userLink : loginRegLink}
         </div>

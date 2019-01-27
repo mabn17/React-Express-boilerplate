@@ -1,5 +1,9 @@
 const Sequelize = require('sequelize');
-const config = require('../../../config/db/config');
+
+// For Travis and S builds.. Rememver to change later
+const config = require('fs').existsSync('../../../config/db/config')
+  ? require('../../../config/db/config')
+  : require('../../../config/db/config.example');
 
 const db = {};
 const sequelize = new Sequelize(

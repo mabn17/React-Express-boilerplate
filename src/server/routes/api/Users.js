@@ -1,6 +1,11 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const jwtConfig = require('../../../../config/jwt/config');
+
+// For Travis and S builds.. Rememver to change later
+const jwtConfig = require('fs').existsSync('../../../../config/jwt/config')
+  ? require('../../../../config/jwt/config')
+  : require('../../../../config/jwt/config.example');
+
 const User = require('../../db/models/Users');
 
 process.env.SECRET_KEY = process.env.SECRET_KEY || jwtConfig.key;

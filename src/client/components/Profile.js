@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 /* eslint-disable camelcase */
 import jwt_decode from 'jwt-decode';
 /* eslint-enable camelcase */
@@ -12,6 +11,8 @@ export default class Profile extends Component {
       last_name: '',
       email: ''
     };
+
+    this.draw = this.draw.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,15 @@ export default class Profile extends Component {
     });
   }
 
+  draw(name, value) {
+    return (
+      <tr>
+        <td>{name}</td>
+        <td>{this.state[value]}</td>
+      </tr>
+    );
+  }
+
   render = () => (
     <div className="container">
       <div className="jumbotron mt-5">
@@ -31,18 +41,9 @@ export default class Profile extends Component {
       </div>
       <table className="table col-md-6 mx-auto">
         <tbody>
-          <tr>
-            <td>Förnamn</td>
-            <td>{this.state.first_name}</td>
-          </tr>
-          <tr>
-            <td>Efternamn</td>
-            <td>{this.state.last_name}</td>
-          </tr>
-          <tr>
-            <td>Mejl</td>
-            <td>{this.state.email}</td>
-          </tr>
+          {this.draw('Förnamn', 'first_name')}
+          {this.draw('Efternamn', 'last_name')}
+          {this.draw('Mejl', 'email')}
         </tbody>
       </table>
     </div>

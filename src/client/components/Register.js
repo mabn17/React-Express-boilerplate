@@ -13,6 +13,7 @@ export default class Register extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.draw = this.draw.bind(this);
   }
 
   onChange(e) {
@@ -36,62 +37,34 @@ export default class Register extends Component {
     });
   }
 
-  // Make it cleaner with for loop?
+  draw(id, value, type) {
+    return (
+      <div className="form-group">
+        <label htmlFor={id} key={id}>
+          {value}
+          <input
+            type={type}
+            className="form-control"
+            name={id}
+            value={this.state[id]}
+            onChange={this.onChange}
+          />
+        </label>
+      </div>
+    );
+  }
+
   render = () => (
     <div className="container">
       <div className="row">
         <div className="col-md-6 mt-5 mx-auto">
           <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label htmlFor="first_name">
-                Förnamn
-                <input
-                  type="first_name"
-                  className="form-control"
-                  name="first_name"
-                  value={this.state.first_name}
-                  onChange={this.onChange}
-                />
-              </label>
-            </div>
-            <div className="form-group">
-              <label htmlFor="last_name">
-                Efternamn
-                <input
-                  type="last_name"
-                  className="form-control"
-                  name="last_name"
-                  value={this.state.last_name}
-                  onChange={this.onChange}
-                />
-              </label>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">
-                Mejl adress
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </label>
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">
-                Lösenord
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </label>
-            </div>
+            {this.draw('first_name', 'Förnamn', 'text', this.state.first_name, this.onChange)}
+            {this.draw('last_name', 'Efternamn', 'text', this.state.last_name, this.onChange)}
+            {this.draw('email', 'Mejl', 'email', this.state.email, this.onChange)}
+            {this.draw('password', 'Lösenord', 'password', this.state.email, this.onChange)}
             <button type="submit" className="btn btn-lg btn-primary btn-block">
-              Logga in
+              Registrera
             </button>
           </form>
         </div>
