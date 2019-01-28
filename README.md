@@ -20,7 +20,8 @@ This is used to build a full stack web application using React, Node.js, Express
     - [Nodemon](#nodemon)
     - [Express](#express)
     - [Concurrently](#concurrently)
-    - [Docker](#docker)
+    - [Database](#database)
+    - [Docker (currently not working as of v1^.)](#docker)
     - [VSCode + ESLint + Prettier](#vscode--eslint--prettier)
       - [Installation guide](#installation-guide)
 
@@ -63,6 +64,8 @@ yarn start (or npm start)
 ### Folder Structure
 
 All the source code will be inside **src** directory. Inside src, there is client and server directory. All the frontend code (react, css, js and any other assets) will be in `/client` directory. Backend Node.js/Express code will be in the `/server` directory.
+
+**Note**: make sure to read the README file inside _config_ and _src_.
 
 ### Babel
 
@@ -239,6 +242,18 @@ This starts a server and listens on port 8080 for connections. As an example, th
 ### VSCode + ESLint + Prettier
 
 [VSCode](https://code.visualstudio.com/) is a lightweight but powerful source code editor. [ESLint](https://eslint.org/) takes care of the code-quality. [Prettier](https://prettier.io/) takes care of all the formatting.
+
+## Database
+
+We are using [MySQL](https://www.mysql.com/) together with the node pakage [Sequelize](http://docs.sequelizejs.com/) as ouer database, all the code can be found in src/server/db. Sequelize is used to easely handle requests to the database simular to PHP and Rubys active record.
+
+If you have trubble with requests to the database simular to `error: SequelizeConnectionError: Client does not support authentication protocol requested by server; consider upgrading MySQL client"​` try running the code below and restart the server.
+
+```mysql
+ALTER USER 'root'@'host' IDENTIFIED WITH mysql_native_password BY 'your pass';
+```
+
+I added an example where you can register as a user, login, logout and view your profile so you can see how it works. The example is currenty using [JsonWebToken](https://github.com/auth0/node-jsonwebtoken) to validate and store user information inside the browsers localStorage (see src/server/db/Users and src/server/routers/api/Users for the backend and src/client/models/UserMethods, src/client/components/ for the fontend).
 
 ### Docker
 
