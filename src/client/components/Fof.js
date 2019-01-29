@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class FoF extends Component {
   componentDidMount() {
-    document.title = 'React Route Test';
+    document.title = '404';
   }
 
   render = () => (
