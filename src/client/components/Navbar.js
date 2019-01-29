@@ -6,28 +6,19 @@ class Navbar extends Component {
   logout(e) {
     e.preventDefault();
     localStorage.removeItem('usertoken');
-    // Checkout Must use destructuring props assignment
-    // & 'history' is missing in props validation
-
-    /* eslint-disable */
     this.props.history.push('/');
-    /* eslint-endable */
   }
 
   render = () => {
-    const loginRegLink = (
-      <ul className="navbar-nav">
-        {navigation.loginRegLink.map(part => (
-          <li key={part.url + part.name} className="nav-item">
-            <Link to={part.url} className="nav-link">
-              {part.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
+    const loginRegLink = navigation.loginRegLink.map(part => (
+      <li key={part.url + part.name} className="nav-item">
+        <Link to={part.url} className="nav-link">
+          {part.name}
+        </Link>
+      </li>
+    ));
     const userLink = (
-      <ul className="navbar-nav">
+      <div className="d-flex">
         {navigation.userLink.map(part => (
           <li key={part.url + part.name} className="nav-item">
             <Link to={part.url} className="nav-link">
@@ -36,11 +27,15 @@ class Navbar extends Component {
           </li>
         ))}
         <li className="nav-item">
-          <button type="button" onClick={this.logout.bind(this)} className="nav-link">
+          <button
+            type="button"
+            onClick={this.logout.bind(this)}
+            className="nav-link bg-dark border-0"
+          >
             Logga ut
           </button>
         </li>
-      </ul>
+      </div>
     );
 
     return (
@@ -58,15 +53,15 @@ class Navbar extends Component {
         </button>
         <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
           <ul className="navbar-nav">
-            {navigation.mainItems.map(part => (
-              <li key={part.url + part.name} className="nav-item">
-                <Link to={part.url} className="nav-link">
-                  {part.name}
+            {navigation.mainItems.map(navLink => (
+              <li key={navLink.url + navLink.name} className="nav-item">
+                <Link to={navLink.url} className="nav-link">
+                  {navLink.name}
                 </Link>
               </li>
             ))}
+            {localStorage.usertoken ? userLink : loginRegLink}
           </ul>
-          {localStorage.usertoken ? userLink : loginRegLink}
         </div>
       </nav>
     );

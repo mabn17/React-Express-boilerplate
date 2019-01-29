@@ -32,7 +32,7 @@ export default class Register extends Component {
 
     registerUser(user).then((res) => {
       if (res) {
-        this.props.history.push('/profile');
+        this.props.history.push('/login');
       }
     });
   }

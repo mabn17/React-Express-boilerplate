@@ -1,11 +1,15 @@
+CREATE DATABASE Chaufforsverksamheten;
 USE Chaufforsverksamheten;
 SET NAMES utf8;
 
 
 -- Example of hadeling premissions
--- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your pass';
+-- ALSO IF Sequelize gives errors check src's README file.
+-- use mysql;
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'ur pass';
+-- flush privileges;
 
-DROP TABLE Users;
+-- DROP TABLE Users;
 CREATE TABLE Users
 (
     id INT AUTO_INCREMENT,
