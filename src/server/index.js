@@ -23,11 +23,16 @@ require('./routes')(app);
 // Redirects to ouer React main file.
 app.use(fallback('index.html', { root: 'dist' }));
 
-// Starts up the server
-https.createServer(options, app).listen(443);
-console.log('Listening on port 443! (HTTPS)');
+// For Tests
+if (process.env.NODE_ENV === 'test') {
+  module.exports = app.listen(port, () => console.log(`Listening on port ${port}!`));
+} else {
+  // Starts up the server
+  https.createServer(options, app).listen(443);
+  console.log('Listening on port 443! (HTTPS)');
 
-http.createServer(app).listen(port);
-console.log(`Listening on port ${port}!`);
+  http.createServer(app).listen(port);
+  console.log(`Listening on port ${port}!`);
 
-// app.listen(port, () => console.log(`Listening on port ${port}!`));
+  // app.listen(port, () => console.log(`Listening on port ${port}!`));
+}
