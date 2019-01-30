@@ -4,7 +4,6 @@ const Sequelize = require('sequelize');
 const config = require('fs').existsSync('../../../config/db/config')
   ? require('../../../config/db/config')
   : require('../../../config/db/config.example');
-
 // const config = require('../../../config/db/config');
 
 const db = {};
