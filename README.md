@@ -21,7 +21,8 @@ This is used to build a full stack web application using React, Node.js, Express
     - [Express](#express)
     - [Concurrently](#concurrently)
     - [Database](#database)
-    - [Docker (currently not working as of v1^.)](#docker)
+    - [Unit Testing](#unit-testing)
+    - [Docker](#docker)
     - [VSCode + ESLint + Prettier](#vscode--eslint--prettier)
       - [Installation guide](#installation-guide)
 
@@ -251,28 +252,63 @@ If you have trubble with requests to the database simular to `error: SequelizeCo
 
 I added an example where you can register as a user, login, logout and view your profile so you can see how it works. The example is currenty using [JsonWebToken](https://github.com/auth0/node-jsonwebtoken) to validate and store user information inside the browsers localStorage (see src/server/db/Users and src/server/routers/api/Users for the backend and src/client/models/UserMethods, src/client/components/ for the fontend).
 
-### Docker
+### Unit Testing
 
-Docker has not been updated and only supports versions below v1.^.
+The main framework for testing is [Mocha](https://mochajs.org/). This is mainly to see if the responses we get are the same as predicted.
 
-Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement with the same rules. All you have to do to start the container is to run run-app-in-docker.sh located in the root directory.
+[Chai/Chai-http](https://www.chaijs.com/plugins/chai-http/) are used so we can talk with the server and spesify witch routes we want to test. Chai takes the server object as a parameter and can from there go to witch ever route you want (given that it has premissions).
 
-```bash
-#!/usr/bin/env bash
+An example of how you can test files:
 
-# Forces running containers to stop.
-docker-compose kill
+```javascript
+const assert = require("assert");
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const server = require("../../src/server/");
 
-# Forcefully removes any stopped service containers.
-docker-compose rm -f
+chai.should();
 
-docker-compose build
+chai.use(chaiHttp);
 
-# Runs the app with port(s) enabled and mapped to the host. Removes the container after run.
-docker-compose run --rm --service-ports app
+describe("Api/Testing route", () => {
+  describe("GET /api/testing", () => {
+    it("200 TESTING PATH", done => {
+      chai
+        .request(server)
+        .get("/api/testing")
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an("object");
+          console.log(res.body);
+          done();
+        });
+    });
+  });
+
+  describe("GET api/testing", () => {
+    it("Content of the response", done => {
+      chai
+        .request(server)
+        .get("/api/testing")
+        .end((err, res) => {
+          assert.equal("test", res.body.test);
+
+          done();
+        });
+    });
+  });
+});
 ```
 
-It uses mhart/alpine-node:11.7 image to run node version 11.7 and can be found [here](https://github.com/mhart/alpine-node). It copys the current workdirectory and moves it into the **app** directory inside the container. It the installs all the necessary packages and starts up the production server.
+[Selenium](https://www.seleniumhq.org/) will be added later on and what that does is to simulate tests for the forntend.
+
+### Docker
+
+**Currently not working as of v1^.**
+
+Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement with the spesific or same rules.
+
+All the dockerfiles are inside **/docker** and are used to test the code agains different versions of node. The different docker test commands are inside of package.json.
 
 **Note**: I'm not an experienced user with Docker so feel free to help me update it.
 

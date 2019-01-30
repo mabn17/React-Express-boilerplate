@@ -1,6 +1,6 @@
 /* global describe it */
 
-// process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 const assert = require('assert');
 const chai = require('chai');
@@ -11,7 +11,7 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe('Reports', () => {
+describe('Api/Testing route', () => {
   describe('GET /api/testing', () => {
     it('200 TESTING PATH', (done) => {
       chai
