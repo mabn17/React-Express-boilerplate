@@ -1,0 +1,11 @@
+# Use a base image
+FROM nikolaik/python-nodejs:latest
+
+# Create a workdir
+RUN mkdir -p /app
+WORKDIR /app
+
+# Install npm packages
+# COPY package.json /app
+COPY . /app
+RUN npm install
