@@ -1,9 +1,28 @@
+# Editor rules
 .vscode
+
+# Nmp
 node_modules
+
+# End build
 dist
+
+# Logs
 *.log
+
+# MacOs
 .DS_Store
+
+# Lock files
 yarn.lock
 package-lock.json
+
+# Sensitive data
 config/db/config.js
 config/jwt/config.js
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# nyc test coverage
+.nyc_output
