@@ -1,7 +1,65 @@
 version: "3"
 services:
-  app:
-    build: .
-    environment: [PORT=8080, NODE_ENV=dev, ENV_NAME=local]
-    ports: ["8080:8080"]
-    volumes: ["./src:/opt/app/src"]
+  node_latest:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-latest
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_10:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-10
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_8:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-8
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_6:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-6
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_alpine:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-alpine
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_10_alpine:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-10-alpine
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_8_alpine:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-8-alpine
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+
+  node_6_alpine:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-6-alpine
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
