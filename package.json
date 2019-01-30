@@ -20,7 +20,10 @@
     "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "clean": "rm -rf npm-debug.log coverage .nyc_output",
     "preclean-all": "npm run clean",
-    "clean-all": "rm -rf node_modules"
+    "clean-all": "rm -rf node_modules",
+    "show-test-mac": "open ./coverage/index.html",
+    "show-test-linux": "firefox ./coverage/index.html",
+    "show-test-windows": "explorer ./coverage/index.html"
   },
   "author": "Martin Borg",
   "license": "ISC",
