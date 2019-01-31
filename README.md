@@ -304,11 +304,15 @@ describe("Api/Testing route", () => {
 
 ### Docker
 
-**Currently not working as of v1^.**
-
-Since we develop on different machine and operating system, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement with the spesific or same rules.
+Since we develop on different machine, operating systems and node versions, it might be good to try out docker. [Docker](https://www.docker.com/) helps us test ouer code agains a server like envirement with the spesific or same rules.
 
 All the dockerfiles are inside **/docker** and are used to test the code agains different versions of node. The different docker test commands are inside of package.json.
+
+An example of running tests on node version 10:
+
+```
+yarn docker-10 (or npm run docker-10)
+```
 
 **Note**: I'm not an experienced user with Docker so feel free to help me update it.
 
