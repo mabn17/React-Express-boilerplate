@@ -11,8 +11,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "validate": "npm run eslint",
     "eslint": "eslint .",
-    "cli-test": "mocha --timeout 5000 test_cli/**/*.js",
-    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha 'test_server/**/*.js'",
+    "cli-test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 5000 test/test_cli/**/*.js",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha './test/test_server/**/*.js'",
     "docker-latest": "docker-compose run node_latest npm test",
     "docker-10": "docker-compose run node_10 npm test",
     "docker-8": "docker-compose run node_8 npm test",
@@ -20,9 +20,9 @@
     "clean": "rm -rf npm-debug.log coverage .nyc_output",
     "preclean-all": "npm run clean",
     "clean-all": "rm -rf node_modules",
-    "show-test-mac": "open coverage/lcov-report/index.html",
-    "show-test-linux": "firefox coverage/lcov-report/index.html",
-    "show-test-windows": "explorer coverage/lcov-report/index.html"
+    "show-test-mac": "open coverage/index.html",
+    "show-test-linux": "firefox coverage/index.html",
+    "show-test-windows": "explorer coverage/index.html"
   },
   "author": "Martin Borg",
   "license": "ISC",

@@ -28,7 +28,7 @@ This is used to build a full stack web application using React, Node.js, Express
 
 ## Introduction
 
-This is a full stack [React](https://reactjs.org/) application with a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) backend. Client side code is written in React and the backend API is written using Express. This application is configured with [Airbnb's ESLint rules](https://github.com/airbnb/javascript) and formatted through [prettier](https://prettier.io/).
+This is a full stack [React](https://reactjs.org/) boilerplate application with a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) backend together with [MySQL](https://www.mysql.com/). Client side code is written in React, [React-router](https://www.npmjs.com/package/react-router-dom) and the backend API is written using Express. This application is configured with [Airbnb's ESLint rules](https://github.com/airbnb/javascript) and formatted through [prettier](https://prettier.io/).
 
 ### Development mode
 
