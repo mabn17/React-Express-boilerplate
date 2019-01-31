@@ -17,5 +17,5 @@ build:
         override:
           - command: npm run report-codecov
             coverage:
-              file: "./build/coverage/coverage.lcov"
+              file: "build/coverage/lcov.covrage"
               format: "lcov"
