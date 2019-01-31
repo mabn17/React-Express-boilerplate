@@ -12,3 +12,10 @@ build:
       tests:
         override:
           - js-scrutinizer-run
+    coverage:
+      tests:
+        override:
+          - command: npm run test
+            coverage:
+              file: "/build/coverage/lcov.info"
+              format: "lcov"
