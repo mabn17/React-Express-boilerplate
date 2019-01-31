@@ -300,7 +300,53 @@ describe("Api/Testing route", () => {
 });
 ```
 
-[Selenium](https://www.seleniumhq.org/) will be added later on and what that does is to simulate tests for the forntend.
+`yarn test (or npm run test)` will test all code inside test/test_server and generate covrage report, you can find it inside /covrage.
+
+[Selenium](https://www.seleniumhq.org/) is used to simulate a user to test the front end, this will not generate any codecovrage but may still be good have. You can find and make your own tests inside test/test_cli/. I've added two examples of how to set them up. **NOTE** to execute the tests you must have the server running (currently set up at port 8080) while having [firefox](https://www.mozilla.org/sv-SE/firefox/new/) installed aswell as [gecodriver](https://github.com/mozilla/geckodriver/releases).
+
+An example of how it can be used:
+
+```javascript
+const assert = require("assert");
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const server = require("../../../src/server/index");
+
+chai.should();
+
+chai.use(chaiHttp);
+
+describe("Api/Testing route", () => {
+  describe("GET /api/testing", () => {
+    it("200 TESTING PATH", done => {
+      chai
+        .request(server)
+        .get("/api/testing")
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.an("object");
+          console.log(res.body);
+          done();
+        });
+    });
+  });
+
+  describe("GET api/testing", () => {
+    it("Content of the response", done => {
+      chai
+        .request(server)
+        .get("/api/testing")
+        .end((err, res) => {
+          assert.equal("test", res.body.test);
+
+          done();
+        });
+    });
+  });
+});
+```
+
+If you want to extend the testing to check your react code while generating covrage i'd recomend following this [article](https://medium.com/@elisegev/running-tests-and-creating-code-coverage-reports-for-react-nodejs-project-continuously-with-60312b6a2dd0). I might add it soon.
 
 ### Docker
 

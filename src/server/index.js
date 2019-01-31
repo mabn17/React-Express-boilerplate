@@ -25,7 +25,7 @@ app.use(fallback('index.html', { root: 'dist' }));
 
 // For Tests
 if (process.env.NODE_ENV === 'test') {
-  module.exports = app.listen(port, () => console.log(`Listening on port ${port}!`));
+  module.exports = app.listen(8081, () => console.log(`Listening on port ${port}!`));
 } else {
   // Starts up the server
   https.createServer(options, app).listen(443);
