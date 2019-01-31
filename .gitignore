@@ -3,6 +3,7 @@
 
 # Nmp
 node_modules
+.npmrc
 
 # End build
 dist
