@@ -12,7 +12,6 @@
     "validate": "npm run eslint",
     "eslint": "eslint .",
     "cli-test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 5000 test/test_cli/**/*.js",
-    "report-codecov": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov && codecov && mv coverage.lcov ./build/coverage/lcov.covrage",
     "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha './test/test_server/**/*.js'",
     "docker-latest": "docker-compose run node_latest npm test",
     "docker-10": "docker-compose run node_10 npm test",
