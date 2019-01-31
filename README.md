@@ -4,6 +4,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/362dfae8e67849c49860cc09236228b5)](https://www.codacy.com/app/mabn17/chaufforsverksamheten?utm_source=github.com&utm_medium=referral&utm_content=mabn17/chaufforsverksamheten&utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/e33aafbfdfda15c35dec/maintainability)](https://codeclimate.com/github/mabn17/chaufforsverksamheten/maintainability)
 
+[![Code Coverage](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/?branch=master)
+
 This is used to build a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
 - [Chaufförsverksamheten](#chaufförsverksamheten)

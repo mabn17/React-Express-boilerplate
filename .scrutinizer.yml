@@ -15,7 +15,7 @@ build:
     coverage:
       tests:
         override:
-          - command: npm run test
+          - command: npm run report-codecov
             coverage:
-              file: "/build/coverage/lcov.info"
+              file: "./build/coverage/coverage.lcov"
               format: "lcov"
