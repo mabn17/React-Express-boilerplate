@@ -4,6 +4,8 @@ filter:
 build:
   environment:
     node: v11.7
+    variables:
+      NODE_ENV: "prod"
   dependencies:
     before:
       - npm install && npm run build

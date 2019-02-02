@@ -10,3 +10,6 @@ branches:
   only:
     - gh-pages
     - /.*/
+
+env:
+  - NODE_ENV=prod
