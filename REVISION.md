@@ -2,6 +2,7 @@
 
 ## v1.3.1 (2019-02-02) Documentation errors
 
+- Fixed build error.
 - Added REVISION file.
 - Fixed Documetation errors.
 - Updated all README files.
