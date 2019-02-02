@@ -300,7 +300,7 @@ describe("Api/Testing route", () => {
 });
 ```
 
-`yarn test (or npm run test)` will test all code inside test/test_server and generate covrage report, you can find it inside /covrage.
+`yarn test (or npm run test)` will test all code inside test/ and generate covrage report, you can find it inside /build/covrage.
 
 [Selenium](https://www.seleniumhq.org/) is used to simulate a user to test the front end, this will not generate any codecovrage but may still be good have. You can find and make your own tests inside test/test_cli/. I've added two examples of how to set them up. **NOTE** to execute the tests you must have the server running (currently set up at port 8080) while having [firefox](https://www.mozilla.org/sv-SE/firefox/new/) installed aswell as [gecodriver](https://github.com/mozilla/geckodriver/releases).
 
@@ -308,45 +308,61 @@ An example of how it can be used:
 
 ```javascript
 const assert = require("assert");
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-const server = require("../../../src/server/index");
+const test = require("selenium-webdriver/testing");
+const webdriver = require("selenium-webdriver");
+const os = require("os");
+const By = webdriver.By;
 
-chai.should();
+let browser;
 
-chai.use(chaiHttp);
+test.describe("Route page test", function() {
+  test.beforeEach(function(done) {
+    this.timeout(20000);
+    browser = new webdriver.Builder()
+      .withCapabilities(webdriver.Capabilities.firefox())
+      .build();
 
-describe("Api/Testing route", () => {
-  describe("GET /api/testing", () => {
-    it("200 TESTING PATH", done => {
-      chai
-        .request(server)
-        .get("/api/testing")
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.an("object");
-          console.log(res.body);
-          done();
-        });
-    });
+    browser.get("http://localhost:8080/");
+    done();
   });
 
-  describe("GET api/testing", () => {
-    it("Content of the response", done => {
-      chai
-        .request(server)
-        .get("/api/testing")
-        .end((err, res) => {
-          assert.equal("test", res.body.test);
+  test.afterEach(function(done) {
+    browser.quit();
+    done();
+  });
 
-          done();
-        });
+  function goToNavLink(target) {
+    browser.findElement(By.linkText(target)).then(function(element) {
+      element.click();
     });
+  }
+
+  function matchUrl(target) {
+    browser.getCurrentUrl().then(function(url) {
+      assert.ok(url.endsWith(target));
+    });
+  }
+
+  function assertH1(target) {
+    browser.findElement(By.css("h1")).then(function(element) {
+      element.getText().then(function(text) {
+        assert.equal(text, target);
+      });
+    });
+  }
+
+  test.it("Index test", function(done) {
+    // Clicking navigation
+    goToNavLink("Hem");
+
+    // gets the header 1
+    assertH1(`Hello ${os.userInfo().username}`);
+    matchUrl("");
+
+    done();
   });
 });
 ```
-
-If you want to extend the testing to check your react code while generating covrage i'd recomend following this [article](https://medium.com/@elisegev/running-tests-and-creating-code-coverage-reports-for-react-nodejs-project-continuously-with-60312b6a2dd0). I might add it soon.
 
 ### Docker
 
