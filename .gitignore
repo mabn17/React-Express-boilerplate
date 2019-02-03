@@ -29,4 +29,4 @@ coverage
 .nyc_output
 
 # test output folder
-build/
+build
