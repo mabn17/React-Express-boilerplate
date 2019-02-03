@@ -47,6 +47,7 @@
     "sequelize": "^4.42.0"
   },
   "devDependencies": {
+    "terser": "3.14.1",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.0.0",

@@ -4,7 +4,7 @@ node_js:
   - 11.7.0
 
 script:
-  - yarn build
+  - npm build
 
 branches:
   only:
