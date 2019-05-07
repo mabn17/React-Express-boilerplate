@@ -1,4 +1,4 @@
-# Chaufförsverksamheten
+# React Express boilerplate
 
 [![Build Status](https://travis-ci.org/mabn17/chaufforsverksamheten.svg?branch=master)](https://travis-ci.org/mabn17/chaufforsverksamheten) [![Build Status](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mabn17/chaufforsverksamheten/?branch=master)
 
@@ -6,7 +6,7 @@
 
 This is used to build a full stack web application using React, Node.js, Express, MySQL and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
-- [Chaufförsverksamheten](#chaufförsverksamheten)
+- [React Express boilerplate](#React-Express-boilerplate)
   - [Introduction](#introduction)
     - [Development mode](#development-mode)
     - [Production mode](#production-mode)
@@ -42,7 +42,7 @@ In the production mode, we will have only 1 server running. All the client side 
 
 ```bash
 # Clone the repository
-git clone git@github.com:mabn17/chaufforsverksamheten.git
+git clone git@github.com:mabn17/react-express-boilerplate.git
 
 # Go inside the directory
 cd chaufforsverksamheten
